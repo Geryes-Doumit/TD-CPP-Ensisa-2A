@@ -16,7 +16,7 @@ class Complex2D {
         Complex2D();
         Complex2D(double, double);
         Complex2D(double);
-        Complex2D(Complex2D const &c);
+        Complex2D(Complex2D const&);
 
         void setRe(double);
         void setIm(double);
@@ -27,7 +27,7 @@ class Complex2D {
         
         Complex2D getConjugate() const;
         Complex2D getInverse() const;
-        Complex2D rotate(double angle);
+        Complex2D getRotated(double angle);
 
         friend Complex2D operator + (const Complex2D &a, const Complex2D &b);
         friend Complex2D operator - (Complex2D const &a, Complex2D const &b);
@@ -39,6 +39,8 @@ class Complex2D {
 
         string to_string() const;
         void printAllInfo() const;
+        ostream& printOn(ostream&) const;
+        ostream& printAllInfoOn(ostream&) const;
 };
 
 #endif

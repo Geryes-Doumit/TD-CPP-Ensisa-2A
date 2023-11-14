@@ -1,30 +1,20 @@
 #include "Complex2D.h"
 
-Complex2D::Complex2D() {
-    re = 0;
-    im = 0;
-    theta = 0;
-    modulus = 0;
-}
+Complex2D::Complex2D():re(0), im(0), theta(0), modulus(0)
+{}
 
-Complex2D::Complex2D(double real, double imaginary) {
-    re = real;
-    im = imaginary;
+Complex2D::Complex2D(double real, double imaginary):re(real), im(imaginary) {
     theta = atan(im/re);
     modulus = sqrt(pow(re, 2) + pow(im, 2));
 }
 
-Complex2D::Complex2D(double ri) {
-    re = ri;
-    im = ri;
+Complex2D::Complex2D(double ri):re(ri), im(ri) {
     theta = atan(1);
-    modulus = sqrt(2*pow(ri, 2));
+    modulus = abs(ri);
 }
 
-Complex2D::Complex2D(Complex2D const &c) {
-    re = c.getRe();
-    im = c.getIm();
-}
+Complex2D::Complex2D(Complex2D const &c):re(c.re), im(c.im), theta(c.theta), modulus(c.modulus)
+{}
 
 void Complex2D::setRe(double real) {
     re = real;
@@ -62,7 +52,7 @@ Complex2D Complex2D::getInverse() const {
     return (1/pow(modulus,2))*getConjugate();
 }
 
-Complex2D Complex2D::rotate(double angle) {
+Complex2D Complex2D::getRotated(double angle) {
     double new_angle = theta + angle;
     return modulus*Complex2D(cos(new_angle), sin(new_angle));
 }
@@ -107,4 +97,19 @@ void Complex2D::printAllInfo() const {
     cout << to_string() << endl
          << "theta: " << theta_str << endl
          << "modulus: " << modulus_str << endl;
+}
+
+ostream& Complex2D::printOn (ostream& os) const {
+    os << to_string() << endl;
+    return os;
+}
+
+ostream& Complex2D::printAllInfoOn (ostream& os) const {
+    string theta_str = std::to_string(theta);
+    string modulus_str = std::to_string(modulus);
+
+    os << to_string() << endl
+       << "theta: " << theta_str << endl
+       << "modulus: " << modulus_str << endl;
+    return os;
 }

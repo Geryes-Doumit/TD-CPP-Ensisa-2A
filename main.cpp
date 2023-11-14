@@ -25,8 +25,8 @@ int main() {
     c.getInverse().printAllInfo();
     cout << endl;
 
-    cout << "c.rotate(pi/4)" << endl;
-    c.rotate(M_PI/4).printAllInfo();
+    cout << "c.getRotated(pi/4)" << endl;
+    c.getRotated(M_PI/4).printAllInfo();
     cout << endl;
 
     cout << "c + c2" << endl;
