@@ -1,10 +1,8 @@
-# TD Complex2D C++
+# TD C++ 2A IR ENSISA
 
-To compile and run the C++ code, use :
+To compile and run the C++ code, go to the right folder using `cd` and run these commands :
 
 ```bash
 $ g++ -o main.o *.cpp
 $ ./main.o
 ```
-
-main.cpp displays the result of most functions in the Complex2D class.
