@@ -1,4 +1,4 @@
-#include"matrix.h"
+/* #include"matrix.h"
 #include"num_matrix.h"
 #include<iostream>
 
@@ -41,4 +41,4 @@ int main(){
     MatrixNumerical<double>::getIdentity(5).Display();
 
     return 0;
-}
+} */
