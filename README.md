@@ -1,17 +1,23 @@
-# TD C++ 2A IR ENSISA
+# C++ learning exercises
 
-To compile and run the C++ code, either go to the right folder using `cd` and run these commands :
-
-```bash
-g++ -o main.o *.cpp
-./main.o
-```
-
-or directly run :
+To compile and run the C++ code, you can use the shell scirpt file `compile-and-run.sh` like this :
 
 ```bash
-g++ -o main.o {path}/*.cpp
-./main.o
+./compile-and-run.sh <folder-path> 
+# compiles all *.cpp files in the specified folder path, 
+# then runs the resulting executable file
 ```
 
-with `{path}` being the path to the right folder, for example : `TD1/Exo1`.
+or like this :
+
+```bash
+./compile-and-run.sh 
+# compiles all *.cpp files in the latest folder (name-based),
+# then runs the resulting executable file
+```
+
+If you cannot run the script file, make sure it has execution rights. You can do :
+
+```bash
+chmod +x compile-and-run.sh
+```
