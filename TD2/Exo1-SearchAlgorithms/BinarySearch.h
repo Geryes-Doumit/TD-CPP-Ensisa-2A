@@ -6,6 +6,8 @@
 class BinarySearch : public SearchingAlgorithm {
     public:
         int search(const vector<int>&, int) override;
+
+        int searchRecursive(const vector<int>&, int, int, int);
 };
 
 #endif
