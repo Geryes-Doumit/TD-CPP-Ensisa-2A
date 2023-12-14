@@ -7,7 +7,7 @@ int BinarySearch::search(const vector<int>& v, int target) {
     int midIndex;
     numberComparisons = 0;
 
-    while (endIndex > startIndex) {
+    while (endIndex >= startIndex) {
         midIndex =  (int) ( (startIndex + endIndex) / 2 );
         int mid = v[midIndex];
         
