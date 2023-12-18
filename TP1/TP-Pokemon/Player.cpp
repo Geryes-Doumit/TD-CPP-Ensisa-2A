@@ -50,9 +50,15 @@ void Player::attachEnergyCard(int indexPokemon, int indexEnergy) {
         cout << "Invalid card type" << endl;
         return;
     }
-    // attach energy card to pokemon
+
     PokemonCard* pokemon = dynamic_cast<PokemonCard*>(this->action[indexPokemon]);
     EnergyCard* energy = dynamic_cast<EnergyCard*>(this->bench[indexEnergy]);
+    
+    if (pokemon->pokemonType != energy->energyType) {
+        cout << "Invalid energy type" << endl;
+        return;
+    }
+
     cout << this->playerName << " is attaching an Energy Card of type " << energy->energyType << " to the Pokémon " << pokemon->CardName << endl;
     pokemon->attachEnergy();
 
