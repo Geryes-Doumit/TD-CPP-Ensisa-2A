@@ -3,6 +3,7 @@
 #include "StepGenerator.h"
 #include "TimeSeriesDataset.h"
 #include "TimeSeriesGenerator.h"
+#include "KNN.h"
 #include <iostream>
 #include <vector>
 
@@ -40,25 +41,25 @@ int main() {
     TimeSeriesGenerator::printTimeSeries(step2);
     trainData.addTimeSeries(step2, 2);
 
-    // vector<int> ground_truth;
+    vector<int> ground_truth;
 
-    // testData.addTimeSeries(gsg.generateTimeSeries(11));
-    // ground_truth.push_back(0);
+    testData.addTimeSeries(gsg.generateTimeSeries(11));
+    ground_truth.push_back(0);
 
-    // testData.addTimeSeries(swg.generateTimeSeries(11));
-    // ground_truth.push_back(1);
+    testData.addTimeSeries(swg.generateTimeSeries(11));
+    ground_truth.push_back(1);
 
-    // testData.addTimeSeries(stg.generateTimeSeries(11));
-    // ground_truth.push_back(2);
+    testData.addTimeSeries(stg.generateTimeSeries(11));
+    ground_truth.push_back(2);
 
-    // KNN knn_1(1, "dtw");
-    // cout << knn_1.evaluate(trainData, testData, ground_truth) << endl;
+    KNN knn_1(1, "dtw");
+    cout << knn_1.evaluate(trainData, testData, ground_truth) << endl;
 
-    // KNN knn_2(2, "euclidean_distance");
-    // cout << knn_2.evaluate(trainData, testData, ground_truth) << endl;
+    KNN knn_2(2, "euclidean_distance");
+    cout << knn_2.evaluate(trainData, testData, ground_truth) << endl;
 
-    // KNN knn_3(3, "euclidean_distance");
-    // cout << knn_3.evaluate(trainData, testData, ground_truth) << endl;
+    KNN knn_3(3, "euclidean_distance");
+    cout << knn_3.evaluate(trainData, testData, ground_truth) << endl;
 
     return 0;
 }

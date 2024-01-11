@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <cfloat>
 
 using namespace std;
 
@@ -15,6 +16,23 @@ class TimeSeriesDataset {
         vector<int> labels;
         int maxlength;
         int numberOfSamples;
+
+    public:
+        int getNumberOfSamples() const {
+            return numberOfSamples;
+        }
+
+        int getMaxLength() const {
+            return maxlength;
+        }
+
+        vector<double> getData(int i) const {
+            return data[i];
+        }
+
+        int getLabel(int i) const {
+            return labels[i];
+        }
 
     public:
         TimeSeriesDataset(bool znormalise, bool isTrain) {
