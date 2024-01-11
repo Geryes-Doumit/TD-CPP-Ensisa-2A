@@ -82,11 +82,10 @@ class KNN {
                     labelCounts[distances[neighbor].second]++;
                 }
 
-                int predictedLabel = max_element(
-                                                    labelCounts.begin(), labelCounts.end(),
-                                                    [](const pair<int, int>& a, const pair<int, int>& b) 
-                                                        { return a.second < b.second; }
-                                     )->first;
+                int predictedLabel = max_element(labelCounts.begin(), labelCounts.end(),
+                                                 [](const pair<int, int>& a, const pair<int, int>& b) 
+                                                     { return a.second < b.second; }
+                                                )->first;
 
                 if (predictedLabel == ground_truth[i]) {
                     ++correctPredictions;
