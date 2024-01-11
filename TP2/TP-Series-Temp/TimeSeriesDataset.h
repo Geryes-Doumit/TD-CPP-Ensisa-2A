@@ -38,6 +38,8 @@ class TimeSeriesDataset {
         TimeSeriesDataset(bool znormalise, bool isTrain) {
             this->znormalise = znormalise;
             this->isTrain = isTrain;
+            numberOfSamples = 0;
+            maxlength = 0;
         }
 
         void addTimeSeries(vector<double> timeSeries, int label) {

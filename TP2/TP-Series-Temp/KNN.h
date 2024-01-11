@@ -23,7 +23,6 @@ class KNN {
         double euclidean_distance(const vector<double>& timeSeries1, const vector<double>& timeSeries2) {
             int size1 = timeSeries1.size();
             int size2 = timeSeries2.size();
-            cout << size1 << " " << size2 << endl;
             if (size1 != size2) {
                 throw invalid_argument("Time series have different sizes.");
             }
@@ -59,9 +58,44 @@ class KNN {
             int correctPredictions = 0;
             double accuracy = 0.0;
             
-            
+            for (size_t i = 0; i < testData.getNumberOfSamples(); ++i) {
+                vector<pair<double, int>> distances;
 
-            return 0;
+                for (size_t j = 0; j < trainData.getNumberOfSamples(); ++j) {
+                    double distance;
+                    if (similarityMeasure == "euclidean_distance") {
+                        distance = euclidean_distance(testData.getData(i), trainData.getData(j));
+                    } 
+                    else if (similarityMeasure == "dtw") {
+                        distance = dtw(testData.getData(i), trainData.getData(j));
+                    } 
+                    else {
+                        throw invalid_argument("Invalid term for similarity");
+                    }
+                    distances.emplace_back(distance, trainData.getLabel(j));
+                }
+
+                sort(distances.begin(), distances.end());
+
+                unordered_map<int, int> labelCounts;
+                for (int neighbor = 0; neighbor < k && neighbor < distances.size(); ++neighbor) {
+                    labelCounts[distances[neighbor].second]++;
+                }
+
+                int predictedLabel = max_element(
+                                                    labelCounts.begin(), labelCounts.end(),
+                                                    [](const pair<int, int>& a, const pair<int, int>& b) 
+                                                        { return a.second < b.second; }
+                                     )->first;
+
+                if (predictedLabel == ground_truth[i]) {
+                    ++correctPredictions;
+                }
+            }
+
+            accuracy = (double) correctPredictions / testData.getNumberOfSamples();
+
+            return accuracy;
         }
 
 };
