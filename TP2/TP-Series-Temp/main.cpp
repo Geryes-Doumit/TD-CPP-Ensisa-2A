@@ -53,12 +53,15 @@ int main() {
     ground_truth.push_back(2);
 
     KNN knn_1(1, "dtw");
+    cout << "knn_1" << endl;
     cout << knn_1.evaluate(trainData, testData, ground_truth) << endl;
 
     KNN knn_2(2, "euclidean_distance");
+    cout << "knn_2" << endl;
     cout << knn_2.evaluate(trainData, testData, ground_truth) << endl;
 
     KNN knn_3(3, "euclidean_distance");
+    cout << "knn_3" << endl;
     cout << knn_3.evaluate(trainData, testData, ground_truth) << endl;
 
     return 0;
